@@ -1,7 +1,7 @@
 var keys = require('./keys.js');
 var inputOne = process.argv[2];
 var inputTwo = process.argv[3];
-
+var fs = require('fs');
 //Node Command Line Aguments For Calling Specific API Requests
 if (inputOne === 'my-tweets') {
     twitterCall();
@@ -10,7 +10,16 @@ if (inputOne === 'my-tweets') {
 } else if (inputOne === 'movie-this') {
     movieDataCall();
 } else if (inputOne === 'do-what-it-says'){
-	var fs = require('./random.txt');
+    fs.readFile('./random.txt', function(err, data) {
+    if(err) {
+    return console.log(err)
+    }
+    var file = data.toString().split(",");
+    inputOne = file[0];
+    inputTwo = file[1];
+    spotifyCall();
+});
+
 };
 
 //Twitter Get Request And Return Object Function
