@@ -11,14 +11,14 @@ if (inputOne === 'my-tweets') {
     movieDataCall();
 } else if (inputOne === 'do-what-it-says'){
     fs.readFile('./random.txt', function(err, data) {
-    if(err) {
-    return console.log(err)
-    }
-    var file = data.toString().split(",");
-    inputOne = file[0];
-    inputTwo = file[1];
-    spotifyCall();
-});
+        if(err) {
+            return console.log(err)
+        }
+        var file = data.toString().split(",");
+        inputOne = file[0];
+        inputTwo = file[1];
+        spotifyCall();
+    });
 
 };
 
@@ -45,9 +45,13 @@ function spotifyCall() {
             return console.log('Error occurred: ' + err);
         }
         var dataObj = data.tracks.items[0].album;
-        console.log(dataObj.name);
-        console.log(dataObj.external_urls.spotify);
-        console.log(dataObj.artists[0].name);
+        console.log("<<<<<<<", data.tracks.items[0].name,">>>>>>>" )
+        console.log(`
+            Artist(s)= ${dataObj.artists[0].name}
+            Song Name = ${data.tracks.items[0].name}
+            Spotify Link = ${dataObj.external_urls.spotify}
+            Album = ${dataObj.name}
+            `);
     });
 };
 
@@ -56,23 +60,17 @@ function spotifyCall() {
 function movieDataCall() {
     var request = require('request');
     request(`http://www.omdbapi.com/?t=${inputTwo}&tomatoes=true&${keys.movieKey}`, function(error, response, body) {
-        console.log('error:', error); // Print the error if one occurred 
-        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
-        // console.log('body:', body); // Print the HTML for the Google homepage. 
-        var bodyObj = JSON.parse(body);
-        console.log(bodyObj.Ratings);
-        for (var key in bodyObj.Ratings) {
-            console.log(key, "========", bodyObj.Ratings[key])
-        };
+        console.log('error:', error);
+        console.log('statusCode:', response && response.statusCode);
         console.log(`
         	Title = ${bodyObj.Title}
         	Year = ${bodyObj.Year}
-        	Rating = ${bodyObj.imdbRated}
+        	Rating = ${bodyObj.Ratings[0].Value}
         	Country = ${bodyObj.Country}
         	Language = ${bodyObj.Language}
         	Plot = ${bodyObj.Plot}
         	Actors = ${bodyObj.Actors} 
-        	Rotten Tomatoes Rating = ${bodyObj.Rating} 
+        	Rotten Tomatoes Rating = ${bodyObj.Ratings[1].Value} 
         	`);
     });
 };
