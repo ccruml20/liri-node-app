@@ -2,6 +2,9 @@ var keys = require('./keys.js');
 var inputOne = process.argv[2];
 var inputTwo = process.argv[3];
 var fs = require('fs');
+var logArray = [];
+
+
 //Node Command Line Aguments For Calling Specific API Requests
 if (inputOne === 'my-tweets') {
     twitterCall();
@@ -30,11 +33,22 @@ function twitterCall() {
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
         if (!error) {
             for (var key in tweets) {
-                console.log("===========", tweets[key].text);
+                var twitterObj = tweets[key].text
+                console.log("===========", twitterObj);
+                logArray.push(twitterObj);
+                console.log("this is my array++++++++++++++++++++++",logArray);                
             }
+            fs.appendFile('log.txt', logArray, function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+
+                console.log("The file was saved!");
+            }); 
         }
     });
 }
+
 
 //Spotify API Request and Return Object Function
 function spotifyCall() {
@@ -45,13 +59,19 @@ function spotifyCall() {
             return console.log('Error occurred: ' + err);
         }
         var dataObj = data.tracks.items[0].album;
-        console.log("<<<<<<<", data.tracks.items[0].name,">>>>>>>" )
         console.log(`
             Artist(s)= ${dataObj.artists[0].name}
             Song Name = ${data.tracks.items[0].name}
             Spotify Link = ${dataObj.external_urls.spotify}
             Album = ${dataObj.name}
             `);
+            fs.appendFile('log.txt', logArray, function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+
+                console.log("The file was saved!");
+            }); 
     });
 };
 
@@ -62,6 +82,25 @@ function movieDataCall() {
     request(`http://www.omdbapi.com/?t=${inputTwo}&tomatoes=true&${keys.movieKey}`, function(error, response, body) {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
+        var bodyObj = JSON.parse(body);
+        var logObj = {
+            title: bodyObj.Title, 
+            year: bodyObj.Year,
+            rating: bodyObj.Ratings[0].Value,
+            country: bodyObj.Country,
+            language: bodyObj.Language,
+            plot: bodyObj.Plot,
+            actors: bodyObj.Actors,
+            rottenTom: bodyObj.Ratings[1].Value
+        }
+        var stringifyObj = JSON.stringify(logObj);
+            fs.appendFile('log.txt', stringifyObj, function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+
+                console.log("The file was saved!");
+            });         
         console.log(`
         	Title = ${bodyObj.Title}
         	Year = ${bodyObj.Year}
@@ -71,6 +110,8 @@ function movieDataCall() {
         	Plot = ${bodyObj.Plot}
         	Actors = ${bodyObj.Actors} 
         	Rotten Tomatoes Rating = ${bodyObj.Ratings[1].Value} 
-        	`);
+        	`);       
     });
 };
+
+
