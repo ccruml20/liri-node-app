@@ -1,1 +1,25 @@
-"The lunacy of being argumentative." https://t.co/vhNYXc7RGv on @LinkedIn "tip @linkedinpulse","3  Advantages She Has Developed As A Result Of Her Struggle" https://t.co/D6KAwWyyVy on @LinkedIn "tip @LinkedInEditors","THE ADDICTION DISTRACTION" https://t.co/Qeo08bwJVu on @LinkedIn "Tip @LinkedInEditors.","Motivation: A common sense approach to people" https://t.co/sORv23CKX1 on @LinkedIn "tip @LinkedInPulse""The lunacy of being argumentative." https://t.co/vhNYXc7RGv on @LinkedIn "tip @linkedinpulse","3  Advantages She Has Developed As A Result Of Her Struggle" https://t.co/D6KAwWyyVy on @LinkedIn "tip @LinkedInEditors","THE ADDICTION DISTRACTION" https://t.co/Qeo08bwJVu on @LinkedIn "Tip @LinkedInEditors.","Motivation: A common sense approach to people" https://t.co/sORv23CKX1 on @LinkedIn "tip @LinkedInPulse"[object Object]{"title":"Forrest Gump","year":"1994","rating":"8.8/10","country":"USA","language":"English","plot":"While not intelligent, Forrest Gump has accidentally been present at many historic moments, but his true love, Jenny Curran, eludes him.","actors":"Tom Hanks, Rebecca Williams, Sally Field, Michael Conner Humphreys","rottenTom":"72%"}
+{
+    "title": "Forrest Gump",
+    "year": "1994",
+    "rating": "8.8/10",
+    "country": "USA",
+    "language": "English",
+    "plot": "While not intelligent, Forrest Gump has accidentally been present at many historic moments, but his true love, Jenny Curran, eludes him.",
+    "actors": "Tom Hanks, Rebecca Williams, Sally Field, Michael Conner Humphreys",
+    "rottenTom": "72%"
+}{
+    "artists": "UB40",
+    "songName": "Red Red Wine - Edit",
+    "spotifyLink": "https://open.spotify.com/album/05owfigVGpgPe7RKJG1hum",
+    "album": "The Very Best Of"
+}{
+    "artists": "Backstreet Boys",
+    "songName": "I Want It That Way",
+    "spotifyLink": "https://open.spotify.com/album/1NslKOZobWxINFaFkLol3r",
+    "album": "The Hits--Chapter One"
+}[
+    "\"The lunacy of being argumentative.\" https://t.co/vhNYXc7RGv on @LinkedIn \"tip @linkedinpulse\"",
+    "\"3  Advantages She Has Developed As A Result Of Her Struggle\" https://t.co/D6KAwWyyVy on @LinkedIn \"tip @LinkedInEditors\"",
+    "\"THE ADDICTION DISTRACTION\" https://t.co/Qeo08bwJVu on @LinkedIn \"Tip @LinkedInEditors.\"",
+    "\"Motivation: A common sense approach to people\" https://t.co/sORv23CKX1 on @LinkedIn \"tip @LinkedInPulse\""
+]

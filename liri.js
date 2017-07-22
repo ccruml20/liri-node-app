@@ -38,7 +38,7 @@ function twitterCall() {
                 logArray.push(twitterObj);
                 console.log("this is my array++++++++++++++++++++++",logArray);                
             }
-            fs.appendFile('log.txt', logArray, function(err) {
+            fs.appendFile('log.txt', JSON.stringify(logArray,null, 4), function(err) {
                 if(err) {
                     return console.log(err);
                 }
@@ -59,13 +59,19 @@ function spotifyCall() {
             return console.log('Error occurred: ' + err);
         }
         var dataObj = data.tracks.items[0].album;
+        var logObj = {
+            artists: dataObj.artists[0].name,
+            songName: data.tracks.items[0].name,
+            spotifyLink: dataObj.external_urls.spotify,
+            album: dataObj.name
+        }
         console.log(`
             Artist(s)= ${dataObj.artists[0].name}
             Song Name = ${data.tracks.items[0].name}
             Spotify Link = ${dataObj.external_urls.spotify}
             Album = ${dataObj.name}
             `);
-            fs.appendFile('log.txt', logArray, function(err) {
+            fs.appendFile('log.txt', JSON.stringify(logObj,null, 4), function(err) {
                 if(err) {
                     return console.log(err);
                 }
@@ -93,8 +99,8 @@ function movieDataCall() {
             actors: bodyObj.Actors,
             rottenTom: bodyObj.Ratings[1].Value
         }
-        var stringifyObj = JSON.stringify(logObj);
-            fs.appendFile('log.txt', stringifyObj, function(err) {
+        // var stringifyObj = JSON.stringify(logObj);
+            fs.appendFile('log.txt', JSON.stringify(logObj,null, 4), function(err) {
                 if(err) {
                     return console.log(err);
                 }
